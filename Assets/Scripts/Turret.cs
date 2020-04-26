@@ -4,13 +4,29 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-    [Header("Turret Attributes")]
+    [Header("General Info")]
     [SerializeField]
-    float range = 15.0f;
+    string turretName;
+    [SerializeField]
+    string turretDescription;
+    [SerializeField]
+    Sprite turretIcon;
+
+    [Header("Turret placeholders")]
     [SerializeField]
     Transform rotationJoint = null;
     [SerializeField]
     float rotationJointSpeed = 10.0f;
+
+    [Header("Turret Attributes")]
+    [SerializeField]
+    Types.AttackTypes damageType;
+    [SerializeField]
+    float minDamage;
+    [SerializeField]
+    float maxDamage;
+    [SerializeField]
+    float range = 15.0f;
     [SerializeField]
     float fireRate = 1f;
 
@@ -80,5 +96,6 @@ public class Turret : MonoBehaviour
     {
         GameObject go = Instantiate(bullet, bulletFirePoint.position, bulletFirePoint.rotation);
         go.GetComponent<Bullet>().SeekTarget(target);
+
     }
 }
